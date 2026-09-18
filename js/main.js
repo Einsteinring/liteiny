@@ -154,6 +154,7 @@ function setupLeadForm() {
   const form = document.getElementById('lead-form');
   if (!form) return;
 
+  const block = form.closest('.contacts__form');
   const success = document.querySelector('[data-form-success]');
   const failure = form.querySelector('[data-form-failure]');
   const submit = form.querySelector('[data-submit]');
@@ -224,6 +225,9 @@ function setupLeadForm() {
         company: form.elements.company?.value ?? ''
       });
 
+      // Заголовок и вводная строка уезжают вместе с формой: иначе
+      // приглашение записаться висит над подтверждением записи.
+      block?.classList.add('is-sent');
       form.hidden = true;
       success.hidden = false;
       success.querySelector('h3').focus?.();
@@ -242,6 +246,7 @@ function setupLeadForm() {
     form.reset();
     Object.keys(rules).forEach((field) => showError(field, ''));
     success.hidden = true;
+    block?.classList.remove('is-sent');
     form.hidden = false;
     form.elements.name.focus();
   });
