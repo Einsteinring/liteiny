@@ -1,0 +1,14 @@
+# Локальные настройки Vercel
+.vercel
+
+# Переменные окружения — токен бота живёт только в настройках Vercel
+.env
+.env.*
+!.env.example
+
+# Мусор ОС и редакторов
+Thumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/

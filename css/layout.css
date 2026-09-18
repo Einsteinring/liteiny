@@ -1,0 +1,65 @@
+/* ============================================================
+   layout.css — контейнер, ритм секций, дорожка «поля документа».
+   Вертикальные отступы секций задаются РОВНО ОДНИМ правилом,
+   чтобы ничего не воевало по специфичности.
+   ============================================================ */
+
+.shell {
+  width: min(100% - 2 * var(--gutter), var(--shell-max));
+  margin-inline: auto;
+}
+
+/* Единственное место, где секция получает вертикальный отступ.
+   Модификаторы меняют переменные, а не переопределяют padding. */
+.section {
+  padding-block: var(--pad-top, var(--section-pad)) var(--pad-bottom, var(--section-pad));
+}
+
+/* Разделитель между секциями — тоже одно правило. */
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+.section--hero {
+  --pad-top: clamp(40px, 5vw, 72px);
+  --pad-bottom: clamp(56px, 7vw, 96px);
+}
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .section--hero { --pad-top: 32px; --pad-bottom: 56px; }
+}
+
+/* — Дорожка: узкое левое поле + широкая колонка ————————— */
+.rail {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.rail__aside {
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  line-height: 1.5;
+  color: var(--iron-muted);
+  max-width: 40ch;
+}
+
+.rail__main { min-width: 0; }
+
+@media (min-width: 1080px) {
+  .rail {
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    column-gap: var(--rail-gap);
+    align-items: start;
+  }
+
+  .rail__aside {
+    padding-top: 0.6em;      /* выравнивание по базовой линии заголовка */
+    border-top: 1px solid var(--rule);
+  }
+}
+
+/* — Заголовок секции ————————————————————————————— */
+.section__title {
+  font-size: var(--size-h2);
+  margin-bottom: var(--space-6);
+}

@@ -1,0 +1,470 @@
+/* ============================================================
+   components.css — повторно используемые куски: шапка, кнопки,
+   реестр, раскрытие, форма, портрет.
+   Все селекторы одноклассовые, вложенность не глубже двух.
+   ============================================================ */
+
+/* ───────────────────────── Шапка ───────────────────────── */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-base) var(--ease);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-height: var(--header-h);
+  transition: min-height var(--t-base) var(--ease);
+}
+
+.site-header[data-compact="true"] {
+  border-bottom-color: var(--rule);
+}
+
+.site-header[data-compact="true"] .site-header__inner {
+  min-height: var(--header-h-compact);
+}
+
+.site-header[data-compact="true"] .wordmark__kind {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.wordmark {
+  display: block;
+  text-decoration: none;
+  flex: none;
+}
+
+.wordmark__name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.wordmark__kind {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--iron-muted);
+  transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+
+.wordmark:hover .wordmark__name { color: var(--patina); }
+
+.site-nav { display: none; }
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.site-nav__list a {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.site-nav__list a:hover { border-bottom-color: var(--patina); }
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.phone {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  white-space: nowrap;
+  display: none;
+}
+
+.phone--block { display: block; }
+
+/* Кнопка меню — только на узких экранах */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 8px 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+}
+
+.nav-toggle__bars {
+  display: grid;
+  gap: 5px;
+  width: 20px;
+}
+
+/* На узком экране слово «Меню» уступает место кнопке записи. */
+@media (max-width: 599px) {
+  .site-header__inner { gap: var(--space-3); }
+  .nav-toggle__label { display: none; }
+  .nav-toggle { padding-inline: 4px; }
+}
+
+.nav-toggle__bars i {
+  display: block;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--t-base) var(--ease);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars i:first-child { transform: translateY(3px) rotate(9deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars i:last-child  { transform: translateY(-3px) rotate(-9deg); }
+
+.mobile-nav {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-4) var(--space-5);
+  max-height: calc(100vh - var(--header-h-compact));
+  overflow-y: auto;
+}
+
+.mobile-nav__list {
+  display: grid;
+  gap: 2px;
+  margin-bottom: var(--space-4);
+}
+
+.mobile-nav__list a {
+  display: block;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  text-decoration: none;
+}
+
+@media (min-width: 1080px) {
+  .site-nav { display: block; }
+  .phone { display: block; }
+  .nav-toggle { display: none; }
+  .mobile-nav { display: none !important; }
+}
+
+/* ───────────────────────── Кнопки и ссылки ───────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 26px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+
+.btn--primary {
+  background: var(--patina);
+  border-color: var(--patina);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--patina-deep);
+  border-color: var(--patina-deep);
+  color: #fff;
+}
+
+.btn--sm { padding: 10px 18px; font-size: 0.875rem; }
+.btn--wide { width: 100%; }
+.btn[disabled] { opacity: 0.55; cursor: progress; }
+
+.link-quiet {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule-strong);
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.link-quiet:hover { color: var(--patina); border-bottom-color: var(--patina); }
+
+/* ───────────────────────── Реестр дел ───────────────────────── */
+
+.docket-block { margin-top: var(--space-6); }
+
+.docket-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: 10px;
+}
+
+.docket-head__title {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.docket-head__date {
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  color: var(--iron-muted);
+}
+
+.docket-rule {
+  display: block;
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+.docket-rule--end { background: var(--rule); }
+
+.docket__head th {
+  padding: 10px 0 9px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  font-weight: 400;
+  color: var(--iron-muted);
+  text-align: left;
+  vertical-align: bottom;
+}
+
+/* Заголовок числового столбца должен стоять над числами, а не слева. */
+.docket__head .docket__num,
+.docket__head .docket__who { text-align: right; }
+
+.docket td {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: baseline;
+}
+
+.docket tbody tr:last-child td { border-bottom: 0; }
+
+.docket td[data-cell="stage"] {
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+  color: var(--iron-muted);
+}
+
+.docket__num {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.docket__who {
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.docket-note {
+  max-width: var(--measure-narrow);
+  margin-top: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+  line-height: 1.55;
+}
+
+.docket-disclaimer {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  color: var(--iron-muted);
+}
+
+@media (min-width: 720px) {
+  .docket colgroup { display: none; }
+  .docket td[data-cell="case"]  { width: 44%; padding-right: var(--space-4); }
+  .docket td[data-cell="stage"] { width: 21%; padding-right: var(--space-4); }
+  .docket th:nth-child(1) { width: 44%; }
+  .docket th:nth-child(2) { width: 21%; }
+}
+
+/* На узком экране строка становится двухстрочным блоком.
+   Роли ARIA проставлены в разметке явно, поэтому смена display
+   не ломает дерево доступности. */
+@media (max-width: 719px) {
+  .docket,
+  .docket tbody { display: block; }
+
+  .docket__head {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .docket__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 14px;
+    padding-block: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .docket__row:last-child { border-bottom: 0; }
+
+  .docket__row td { padding: 0; border: 0; }
+  .docket__row td[data-cell="case"]  { grid-area: 1 / 1; line-height: 1.35; }
+  .docket__row td[data-cell="sum"]   { grid-area: 1 / 2; }
+  .docket__row td[data-cell="stage"] { grid-area: 2 / 1; margin-top: 3px; }
+  .docket__row td[data-cell="lead"]  { grid-area: 2 / 2; margin-top: 3px; }
+}
+
+/* ───────────────────────── Раскрытие ───────────────────────── */
+
+.disclosure {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+  color: var(--iron-muted);
+  transition: color var(--t-fast) var(--ease);
+}
+
+.disclosure:hover { color: var(--patina); }
+.disclosure[aria-expanded="true"] { color: var(--patina); }
+
+.disclosure__text {
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 1px;
+}
+
+.disclosure__mark {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  flex: none;
+}
+
+.disclosure__mark::before,
+.disclosure__mark::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.disclosure__mark::before { left: 0; top: 5px; width: 11px; height: 1px; }
+
+.disclosure__mark::after {
+  left: 5px; top: 0; width: 1px; height: 11px;
+  transition: transform var(--t-open) var(--ease);
+}
+
+.disclosure[aria-expanded="true"] .disclosure__mark::after { transform: scaleY(0); }
+
+/* Свёрнутое состояние включается только после того, как скрипт
+   отработал: без него детали остаются видимыми, а не пропадают.
+   Переход идёт по height — JS подставляет пиксели на время анимации
+   и снимает их в конце, чтобы высота снова стала auto. */
+[data-collapsible] {
+  overflow: hidden;
+  transition: height var(--t-open) var(--ease);
+}
+
+.js-ready [data-collapsible] { height: 0; }
+.js-ready [data-collapsible][data-open="true"] { height: auto; }
+
+/* ───────────────────────── Форма ───────────────────────── */
+
+.form { display: grid; gap: var(--space-4); }
+
+.field { display: grid; gap: 7px; }
+
+.field__label {
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+}
+
+.field__input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.field__input:hover { border-color: var(--iron-muted); }
+.field__input:focus-visible { border-color: var(--patina); }
+
+.field__input--area { resize: vertical; min-height: 110px; line-height: 1.5; }
+
+.field__input[aria-invalid="true"] { border-color: var(--danger); }
+
+.field__hint,
+.field__error {
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  line-height: 1.45;
+}
+
+.field__hint { color: var(--iron-muted); }
+.field__error { color: var(--danger); }
+
+.form__legal,
+.form__failure {
+  font-family: var(--font-sans);
+  font-size: var(--size-meta);
+  line-height: 1.5;
+  color: var(--iron-muted);
+}
+
+.form__failure { color: var(--danger); }
+
+.form__success { border-top: 2px solid var(--patina); padding-top: var(--space-4); }
+.form__success h3 { font-size: var(--size-h3); margin-bottom: var(--space-2); }
+.form__success p { max-width: 44ch; margin-bottom: var(--space-4); }
+
+/* ───────────────────────── Портрет ───────────────────────── */
+
+.member__photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+}

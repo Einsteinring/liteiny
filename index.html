@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Литейный — юридическое бюро для бизнеса, Санкт-Петербург</title>
+<meta name="description" content="Юридическое бюро «Литейный» в Санкт-Петербурге: корпоративное право и сделки, арбитраж, банкротство и субсидиарная ответственность, споры с ФНС, недвижимость, трудовые споры с руководителями. Восемь дел одновременно, партнёр ведёт дело сам.">
+<meta name="theme-color" content="#eff2f0">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Юридическое бюро «Литейный»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Литейный — юридическое бюро для бизнеса, Санкт-Петербург">
+<meta property="og:description" content="Восемь дел одновременно. Девятое возьмём, только если сможем вести его так же. Корпоративное право, арбитраж, банкротство, налоги.">
+<meta property="og:url" content="https://liteiny-buro.vercel.app/">
+<meta property="og:image" content="https://liteiny-buro.vercel.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Юридическое бюро «Литейный», Санкт-Петербург, с 2014 года">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500&family=Literata:opsz,wght@7..72,400&display=swap">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+
+<script>
+/* Класс .js прячет реестр до анимации набора. Страховка на случай,
+   если модуль не загрузится: через 1,5 с реестр показывается сам. */
+document.documentElement.classList.add('js');
+setTimeout(function () {
+  var hero = document.querySelector('[data-hero]');
+  if (hero) hero.classList.add('is-composed');
+}, 1500);
+</script>
+</head>
+
+<body id="top">
+
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="site-header" data-header>
+  <div class="shell site-header__inner">
+    <a class="wordmark" href="#top">
+      <span class="wordmark__name">Литейный</span>
+      <span class="wordmark__kind">юридическое бюро</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Разделы сайта">
+      <ul class="site-nav__list">
+        <li><a href="#practices">Практики</a></li>
+        <li><a href="#results">Чем закончились</a></li>
+        <li><a href="#team">Команда</a></li>
+        <li><a href="#formats">Стоимость</a></li>
+        <li><a href="#articles">Статьи</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="phone" href="tel:+78124251840">+7 812 425-18-40</a>
+      <a class="btn btn--primary btn--sm" href="#contacts">Записаться</a>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Меню разделов" data-nav-toggle>
+      <span class="nav-toggle__label">Меню</span>
+      <span class="nav-toggle__bars" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" data-nav-panel hidden>
+    <nav class="shell" aria-label="Разделы сайта">
+      <ul class="mobile-nav__list">
+        <li><a href="#practices">Практики</a></li>
+        <li><a href="#results">Чем закончились</a></li>
+        <li><a href="#team">Команда</a></li>
+        <li><a href="#formats">Форматы работы</a></li>
+        <li><a href="#articles">Публикации</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a class="phone phone--block" href="tel:+78124251840">+7 812 425-18-40</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ─────────────────────────── Первый экран ─────────────────────────── -->
+  <section class="section section--hero" data-hero>
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Бюро в Петербурге<br>с 2014 года</p>
+      </div>
+
+      <div class="rail__main hero__main">
+        <h1 class="hero__title">Восемь дел одновременно. Девятое возьмём, только&nbsp;если сможем вести его так&nbsp;же.</h1>
+
+        <p class="hero__definition">Бюро корпоративного права в Санкт-Петербурге. Ведём дела компаний&nbsp;— частных споров не берём.</p>
+
+        <div class="docket-block">
+          <div class="docket-head">
+            <h2 class="docket-head__title">Дела в работе</h2>
+            <p class="docket-head__date"><time datetime="2026-09" data-docket-date>Сентябрь 2026</time></p>
+          </div>
+
+          <span class="docket-rule" aria-hidden="true"></span>
+
+          <table class="docket" role="table">
+            <caption class="sr-only">Дела, которые бюро ведёт сейчас: предмет дела, стадия, цена вопроса и ведущий юрист</caption>
+            <thead role="rowgroup" class="docket__head">
+              <tr role="row">
+                <th role="columnheader" scope="col">Дело</th>
+                <th role="columnheader" scope="col">Стадия</th>
+                <th role="columnheader" scope="col" class="docket__num">Цена вопроса</th>
+                <th role="columnheader" scope="col" class="docket__who">Ведёт</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              <tr role="row" class="docket__row" style="--i:0">
+                <td role="cell" data-cell="case">Оспаривание сделки в банкротстве</td>
+                <td role="cell" data-cell="stage">первая инстанция</td>
+                <td role="cell" data-cell="sum" class="docket__num">41,2 млн ₽</td>
+                <td role="cell" data-cell="lead" class="docket__who">Радько</td>
+              </tr>
+              <tr role="row" class="docket__row" style="--i:1">
+                <td role="cell" data-cell="case">Выездная проверка ФНС</td>
+                <td role="cell" data-cell="stage">возражения на акт</td>
+                <td role="cell" data-cell="sum" class="docket__num">27,4 млн ₽</td>
+                <td role="cell" data-cell="lead" class="docket__who">Мирошник</td>
+              </tr>
+              <tr role="row" class="docket__row" style="--i:2">
+                <td role="cell" data-cell="case">Продажа доли в сети автосервисов</td>
+                <td role="cell" data-cell="stage">подготовка сделки</td>
+                <td role="cell" data-cell="sum" class="docket__num">310,0 млн ₽</td>
+                <td role="cell" data-cell="lead" class="docket__who">Ковалёв</td>
+              </tr>
+              <tr role="row" class="docket__row" style="--i:3">
+                <td role="cell" data-cell="case">Спор с подрядчиком по объекту</td>
+                <td role="cell" data-cell="stage">кассация</td>
+                <td role="cell" data-cell="sum" class="docket__num">19,8 млн ₽</td>
+                <td role="cell" data-cell="lead" class="docket__who">Ветлугина</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <span class="docket-rule docket-rule--end" aria-hidden="true"></span>
+
+          <p class="docket-note">Ещё четыре дела мы не называем. Восемь — это потолок: партнёр ведёт дело сам, а не передаёт помощнику после первой встречи.</p>
+          <p class="docket-disclaimer">Дела обезличены: предмет спора описан общо, суммы изменены.</p>
+        </div>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contacts">Записаться на консультацию</a>
+          <a class="link-quiet" href="#formats">Как мы считаем стоимость</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Практики ─────────────────────────── -->
+  <section class="section" id="practices">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Шесть направлений.<br>В каждом — партнёр,<br>а не помощник.</p>
+      </div>
+
+      <div class="rail__main">
+        <h2 class="section__title">Практики</h2>
+
+        <div class="practices">
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Корпоративное право и сделки</h3>
+              <p class="practice__lead">Покупка и продажа бизнеса, вход инвестора, опционы, корпоративные договоры, выход участника. Готовим сделку так, чтобы через три года она не развалилась в суде.</p>
+              <p class="practice__owner">Ведёт Ковалёв</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p1">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p1" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Покупатель нашёлся, но проверка вскрыла долги, о которых вы не знали, — и торг начинается заново.</li>
+                  <li>Партнёр выходит из бизнеса и требует выкупить долю по своей оценке.</li>
+                  <li>Инвестор зашёл в ООО, а корпоративный договор написан так, что блокирует любое решение.</li>
+                </ul>
+                <p class="practice__who"><a href="#kovalev">Андрей Ковалёв, управляющий партнёр, 18 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Арбитражные споры</h3>
+              <p class="practice__lead">Ведём спор от претензии до кассации. Считаем перспективу до начала и говорим прямо, если судиться невыгодно.</p>
+              <p class="practice__owner">Ведёт Радько</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p2">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p2" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Контрагент не платит по поставке и тянет время встречным иском.</li>
+                  <li>Дело проиграно в первой инстанции, до апелляционной жалобы остался месяц.</li>
+                  <li>Решение вступило в силу, а должник выводит активы быстрее, чем работают приставы.</li>
+                </ul>
+                <p class="practice__who"><a href="#radko">Мария Радько, партнёр, 14 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Банкротство и защита от субсидиарной ответственности</h3>
+              <p class="practice__lead">Забираем директора и собственника из-под требований управляющего и кредиторов. Оспаривание сделок, возражения на субсидиарку, работа с реестром требований.</p>
+              <p class="practice__owner">Ведёт Радько</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p3">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p3" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Управляющий оспаривает платежи трёхлетней давности и требует вернуть их в конкурсную массу.</li>
+                  <li>Кредитор подал заявление о привлечении вас к субсидиарной ответственности по долгам компании.</li>
+                  <li>Компания идёт ко дну, и надо понять, когда подавать заявление самим, чтобы промедление не поставили в вину.</li>
+                </ul>
+                <p class="practice__who"><a href="#radko">Мария Радько, партнёр, 14 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Налоговые проверки и споры с ФНС</h3>
+              <p class="practice__lead">Сопровождаем выездную проверку с первого требования до решения по жалобе. Готовим ответы так, чтобы они не стали доказательством против вас в следующем эпизоде.</p>
+              <p class="practice__owner">Ведёт Мирошник</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p4">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p4" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Инспекция запросила документы по всей цепочке поставщиков и намекает на техническую компанию во втором звене.</li>
+                  <li>Акт проверки уже на руках, до возражений четырнадцать дней.</li>
+                  <li>Директора вызвали на комиссию по легализации налоговой базы.</li>
+                </ul>
+                <p class="practice__who"><a href="#miroshnik">Илья Мирошник, партнёр, 16 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Недвижимость и строительство</h3>
+              <p class="practice__lead">Сделки с объектами, аренда, споры по подряду и приёмке. Разбираем проектную и исполнительную документацию сами, без экспертизы на каждый вопрос.</p>
+              <p class="practice__owner">Ведёт Ветлугина</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p5">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p5" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Подрядчик сорвал срок, а в актах подписано больше, чем сделано на площадке.</li>
+                  <li>Заказчик не принимает работы и не платит, ссылаясь на недостатки, которых нет в договоре.</li>
+                  <li>Купили здание, а потом выяснилось, что часть площадей — самовольная постройка.</li>
+                </ul>
+                <p class="practice__who"><a href="#vetlugina">Ольга Ветлугина, старший юрист, 11 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice">
+            <div class="practice__top">
+              <h3 class="practice__name">Трудовые споры с руководителями</h3>
+              <p class="practice__lead">Смена генерального директора, золотые парашюты, взыскание убытков с бывшего руководства, споры о коммерческой тайне. Работаем на стороне компании.</p>
+              <p class="practice__owner">Ведёт Ковалёв</p>
+            </div>
+            <button class="disclosure" type="button" aria-expanded="false" aria-controls="p6">
+              <span class="disclosure__text">Типичные ситуации</span>
+              <span class="disclosure__mark" aria-hidden="true"></span>
+            </button>
+            <div class="practice__detail" id="p6" data-collapsible>
+              <div class="practice__detail-inner">
+                <ul class="situations">
+                  <li>Совет директоров решил сменить генерального, а тот готовится оспорить увольнение.</li>
+                  <li>Бывший коммерческий директор ушёл к конкуренту и увёл клиентскую базу.</li>
+                  <li>Руководитель заключил сделку в ущерб компании, и убытки надо взыскать с него лично.</li>
+                </ul>
+                <p class="practice__who"><a href="#kovalev">Андрей Ковалёв, управляющий партнёр, 18 лет</a></p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Чем закончились ─────────────────────────── -->
+  <section class="section" id="results">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Шесть дел, которые уже закрыты. Клиенты не называются, обстоятельства изменены.</p>
+      </div>
+
+      <div class="rail__main">
+        <h2 class="section__title">Чем закончились</h2>
+
+        <div class="cases">
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2024</span>
+              <span class="case__area">Банкротство</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Управляющий требовал вернуть в конкурсную массу платежи трёхлетней давности и привлечь собственника к субсидиарной ответственности.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Подняли первичные документы по каждой поставке, показали, что платежи шли по действующим договорам, заказали экспертизу рыночности цен.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">Суд отказал во включении требования на 71,4 млн ₽ и снял субсидиарную ответственность полностью.</p>
+            </div>
+          </article>
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2025</span>
+              <span class="case__area">Налоги</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Выездная проверка сняла вычеты по четырём поставщикам и доначислила налог, пени и штраф.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Собрали доказательства реальности поставок, нашли ошибки в расчёте инспекции, прошли возражения и апелляционную жалобу в управление.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">Доначисления снизились с 48,2 до 6,1 млн ₽. До суда дело не дошло.</p>
+            </div>
+          </article>
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2023</span>
+              <span class="case__area">Корпоративный конфликт</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Два участника с равными долями заблокировали друг другу все решения: компания девять месяцев не могла назначить директора.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Провели переговоры, оформили опцион с отлагательным условием и график выкупа под залог доли.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">Один участник вышел из общества, компания продолжила работу. В суд не пошли ни разу.</p>
+            </div>
+          </article>
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2025</span>
+              <span class="case__area">Строительство</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Заказчик отказался принимать работы и удержал обеспечение, сославшись на недостатки, часть которых появилась не по вине подрядчика.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Разобрали исполнительную документацию, провели досудебную экспертизу, заявили встречные требования по срокам передачи фронта работ.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">Взыскали 23,6 млн ₽ долга и 2,1 млн ₽ процентов, обеспечение вернули целиком.</p>
+            </div>
+          </article>
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2022</span>
+              <span class="case__area">Сделка</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Собственник продавал производство. Покупатель нашёл незарегистрированную реконструкцию цеха и требовал снизить цену на треть.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Узаконили реконструкцию до выхода на сделку, переписали заверения продавца и механизм отложенного платежа.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">Сделка закрылась по исходной цене 268 млн ₽, дисконт снялся.</p>
+            </div>
+          </article>
+
+          <article class="case">
+            <h3 class="case__head">
+              <span class="case__year">2024</span>
+              <span class="case__area">Трудовой спор</span>
+            </h3>
+            <div class="case__body">
+              <dl class="case__facts">
+                <div class="case__part">
+                  <dt>Ситуация</dt>
+                  <dd>Бывший генеральный директор оспаривал увольнение и требовал компенсацию, записанную в трудовом договоре.</dd>
+                </div>
+                <div class="case__part">
+                  <dt>Что сделали</dt>
+                  <dd>Показали, что решение принято в рамках устава, и параллельно заявили иск об убытках от сделки, которую он провёл в последний месяц работы.</dd>
+                </div>
+              </dl>
+              <p class="case__outcome">В восстановлении отказали, компенсацию 18,9 млн ₽ не взыскали, убытки 7,3 млн ₽ взыскали с него.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Команда ─────────────────────────── -->
+  <section class="section" id="team">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Четверо. Столько, сколько нужно, чтобы вести восемь дел и не передавать их друг другу.</p>
+      </div>
+
+      <div class="rail__main">
+        <h2 class="section__title">Команда</h2>
+
+        <ul class="team">
+          <li class="member" id="kovalev">
+            <img class="member__photo" src="assets/team/kovalev.svg" width="600" height="800" alt="Андрей Ковалёв, управляющий партнёр бюро «Литейный»">
+            <div class="member__body">
+              <h3 class="member__name">Андрей Ковалёв</h3>
+              <p class="member__role">Управляющий партнёр. Корпоративное право, сделки, трудовые споры с руководителями</p>
+              <p class="member__years">18 лет в профессии</p>
+              <p class="member__edu">СПбГУ, юридический факультет, 2008</p>
+              <ul class="member__facts">
+                <li>Шесть лет вёл корпоративную практику в петербургском офисе международной фирмы, в 2014 году ушёл и основал бюро.</li>
+                <li>Закрыл больше сорока сделок купли-продажи бизнеса — от автосервисов до производства.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="member" id="radko">
+            <img class="member__photo" src="assets/team/radko.svg" width="600" height="800" alt="Мария Радько, партнёр бюро «Литейный»">
+            <div class="member__body">
+              <h3 class="member__name">Мария Радько</h3>
+              <p class="member__role">Партнёр. Банкротство, субсидиарная ответственность, арбитражные споры</p>
+              <p class="member__years">14 лет в профессии</p>
+              <p class="member__edu">СПбГУ, магистратура по гражданскому процессу, 2012</p>
+              <ul class="member__facts">
+                <li>Три года работала арбитражным управляющим и знает, как позиция строится с другой стороны стола.</li>
+                <li>Ведёт дела в Петербурге и в Москве, в среднем три банкротных процесса одновременно.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="member" id="miroshnik">
+            <img class="member__photo" src="assets/team/miroshnik.svg" width="600" height="800" alt="Илья Мирошник, партнёр бюро «Литейный»">
+            <div class="member__body">
+              <h3 class="member__name">Илья Мирошник</h3>
+              <p class="member__role">Партнёр. Налоговые проверки и споры с ФНС</p>
+              <p class="member__years">16 лет в профессии</p>
+              <p class="member__edu">СПбГЭУ, 2010, профпереподготовка по налоговому праву</p>
+              <ul class="member__facts">
+                <li>Четыре года провёл в отделе выездных проверок инспекции и писал те самые акты, на которые теперь отвечает.</li>
+                <li>Берёт не больше трёх проверок одновременно: сопровождение требует присутствия, а не переписки.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="member" id="vetlugina">
+            <img class="member__photo" src="assets/team/vetlugina.svg" width="600" height="800" alt="Ольга Ветлугина, старший юрист бюро «Литейный»">
+            <div class="member__body">
+              <h3 class="member__name">Ольга Ветлугина</h3>
+              <p class="member__role">Старший юрист. Недвижимость, строительство, подряд</p>
+              <p class="member__years">11 лет в профессии</p>
+              <p class="member__edu">СПбГАСУ, инженер-строитель, 2011; СПбГУ, юридический факультет, 2015</p>
+              <ul class="member__facts">
+                <li>Первое образование строительное, поэтому читает проектную документацию сама и видит расхождения раньше эксперта.</li>
+                <li>Ведёт споры по подряду и приёмке, включая объекты, сданные с отступлениями от проекта.</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <p class="team__note">Фотографии заменим на съёмку: сейчас на их месте заглушки одного размера.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Форматы работы ─────────────────────────── -->
+  <section class="section" id="formats">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Цены реальные. Точную сумму называем после того, как посмотрим документы, — но вилку видно сразу.</p>
+      </div>
+
+      <div class="rail__main">
+        <h2 class="section__title">Форматы работы</h2>
+
+        <div class="formats">
+          <article class="format">
+            <h3 class="format__name">Разовая консультация</h3>
+            <p class="format__price">от 15 000 ₽ <span>за час</span></p>
+            <dl class="format__facts">
+              <dt>Что входит</dt>
+              <dd>Изучаем документы до встречи, час разговора с партнёром, письменное резюме с вариантами и рисками в течение двух рабочих дней.</dd>
+              <dt>Как считается</dt>
+              <dd>По часам, минимальный объём — один час. Если после консультации берём дело, её стоимость засчитываем в первый платёж.</dd>
+            </dl>
+          </article>
+
+          <article class="format">
+            <h3 class="format__name">Ведение дела</h3>
+            <p class="format__price">от 250 000 ₽ <span>за инстанцию</span></p>
+            <dl class="format__facts">
+              <dt>Что входит</dt>
+              <dd>Позиция, все документы, представительство в заседаниях, работа с экспертизами, короткий отчёт после каждого заседания.</dd>
+              <dt>Как считается</dt>
+              <dd>Фиксированная сумма за инстанцию, известна до подписания. Гонорар успеха — 3–7% от выигранного или сэкономленного, обсуждаем до начала работы, а не после победы.</dd>
+            </dl>
+          </article>
+
+          <article class="format">
+            <h3 class="format__name">Абонентское обслуживание</h3>
+            <p class="format__price">от 120 000 ₽ <span>в месяц</span></p>
+            <dl class="format__facts">
+              <dt>Что входит</dt>
+              <dd>Двадцать часов в месяц на договоры, кадровые документы, ответы на требования и короткие консультации по телефону.</dd>
+              <dt>Как считается</dt>
+              <dd>Неизрасходованные часы один раз переносим на следующий месяц. Судебные дела в абонент не входят и считаются отдельно.</dd>
+            </dl>
+          </article>
+        </div>
+
+        <p class="formats__note">Чего не делаем: не берёмся за дело «под процент» без фиксированной части и не называем шансы до того, как прочитаем документы.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Публикации ─────────────────────────── -->
+  <section class="section" id="articles">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Пишем, когда меняется практика, а не по графику.</p>
+      </div>
+
+      <div class="rail__main">
+        <h2 class="section__title">Публикации</h2>
+
+        <ul class="articles">
+          <li class="article">
+            <p class="article__date"><time datetime="2026-09-02">2 сентября 2026</time></p>
+            <div>
+              <h3 class="article__title">Субсидиарка после поправок: что изменилось для директора, который вышел из компании три года назад</h3>
+              <p class="article__lead">Разбираем, как новые правила о сроках давности применяются к тем, кто давно не у руля, и что теперь имеет смысл хранить.</p>
+            </div>
+          </li>
+          <li class="article">
+            <p class="article__date"><time datetime="2026-08-14">14 августа 2026</time></p>
+            <div>
+              <h3 class="article__title">ФНС запрашивает документы по цепочке контрагентов. Что отвечать и чего не писать никогда</h3>
+              <p class="article__lead">Шесть формулировок из реальных ответов, которые инспекция потом цитировала в акте как признание.</p>
+            </div>
+          </li>
+          <li class="article">
+            <p class="article__date"><time datetime="2026-07-29">29 июля 2026</time></p>
+            <div>
+              <h3 class="article__title">Опцион на долю в ООО: три условия, из-за которых сделку разворачивают в суде</h3>
+              <p class="article__lead">Что суды считают согласованным условием, а что — намерением, и почему нотариус не спасает.</p>
+            </div>
+          </li>
+        </ul>
+
+        <p class="articles__note">Полные тексты выходят в рассылке бюро. Чтобы попасть в неё, напишите на почту с темой «рассылка».</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── Контакты ─────────────────────────── -->
+  <section class="section" id="contacts">
+    <div class="shell rail">
+      <div class="rail__aside">
+        <p>Первый разговор — бесплатный, пятнадцать минут по телефону. Нужен он, чтобы понять, ваше это дело или не наше.</p>
+      </div>
+
+      <div class="rail__main contacts">
+        <div class="contacts__info">
+          <h2 class="section__title">Контакты</h2>
+
+          <dl class="contact-list">
+            <dt>Адрес</dt>
+            <dd>Санкт-Петербург, Литейный проспект, 26, офис&nbsp;401</dd>
+            <dt>Как найти</dt>
+            <dd>Вход со двора, пятый подъезд, домофон 401. Ближайшее метро — «Маяковская», семь минут пешком.</dd>
+            <dt>Часы работы</dt>
+            <dd>Понедельник — пятница, 9:30–19:00. В выходные отвечаем, если ваше дело в работе.</dd>
+            <dt>Телефон</dt>
+            <dd><a href="tel:+78124251840">+7 812 425-18-40</a></dd>
+            <dt>Почта</dt>
+            <dd><a href="mailto:delo@liteiny-buro.ru">delo@liteiny-buro.ru</a></dd>
+          </dl>
+        </div>
+
+        <div class="contacts__form">
+          <h3 class="form__title">Записаться на консультацию</h3>
+          <p class="form__intro">Перезваниваем в рабочее время, обычно в течение часа. Если дело срочное — лучше позвонить.</p>
+
+          <form class="form" id="lead-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="lead-name">Как к вам обращаться</label>
+              <input class="field__input" type="text" id="lead-name" name="name" autocomplete="name" required aria-describedby="err-name">
+              <p class="field__error" id="err-name" data-error-for="name" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="lead-phone">Телефон</label>
+              <input class="field__input" type="tel" id="lead-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required aria-describedby="err-phone">
+              <p class="field__error" id="err-phone" data-error-for="phone" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="lead-question">Суть вопроса</label>
+              <textarea class="field__input field__input--area" id="lead-question" name="question" rows="4" required aria-describedby="hint-question err-question"></textarea>
+              <p class="field__hint" id="hint-question">Пары предложений достаточно: что произошло и на какой стадии. Подробности разберём на встрече.</p>
+              <p class="field__error" id="err-question" data-error-for="question" hidden></p>
+            </div>
+
+            <button class="btn btn--primary btn--wide" type="submit" data-submit>Записаться на консультацию</button>
+
+            <p class="form__legal">Отправляя форму, вы соглашаетесь на обработку указанных данных для ответа на обращение. Это демонстрационный сайт: заявка никуда не уходит.</p>
+            <p class="form__failure" data-form-failure role="alert" hidden></p>
+          </form>
+
+          <div class="form__success" data-form-success role="status" hidden>
+            <h3 tabindex="-1">Записали</h3>
+            <p>Перезвоним в рабочее время, обычно в течение часа. Если не дождётесь — наберите сами: <a href="tel:+78124251840">+7 812 425-18-40</a>.</p>
+            <button class="link-quiet" type="button" data-form-reset>Отправить ещё одну заявку</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <p class="site-footer__name">Литейный</p>
+        <p class="site-footer__kind">Юридическое бюро, Санкт-Петербург, с 2014 года</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Разделы сайта, повтор">
+        <ul>
+          <li><a href="#practices">Практики</a></li>
+          <li><a href="#results">Чем закончились</a></li>
+          <li><a href="#team">Команда</a></li>
+          <li><a href="#formats">Форматы работы</a></li>
+          <li><a href="#articles">Публикации</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact">
+        <p><a href="tel:+78124251840">+7 812 425-18-40</a></p>
+        <p><a href="mailto:delo@liteiny-buro.ru">delo@liteiny-buro.ru</a></p>
+        <p>Литейный проспект, 26, офис&nbsp;401<br>Понедельник — пятница, 9:30–19:00</p>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>ООО «Юридическое бюро „Литейный“» · ИНН 7842219043 · ОГРН 1147847291580 · 191028, Санкт-Петербург, Литейный проспект, 26, офис 401</p>
+      <p class="site-footer__demo">Сайт демонстрационный. Бюро, сотрудники, дела и реквизиты вымышлены, юридические услуги не оказываются. Сделано как портфолийная работа.</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

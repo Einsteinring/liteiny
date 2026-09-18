@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Заглушка портрета">
+  <rect width="600" height="800" fill="#dfe4e2"/>
+  <rect x="0.5" y="0.5" width="599" height="799" fill="none" stroke="#c6ccca"/>
+  <rect x="28.5" y="28.5" width="543" height="743" fill="none" stroke="#c6ccca"/>
+  <text x="300" y="404" text-anchor="middle" font-family="Literata, Georgia, serif" font-size="128" fill="#8d9895" letter-spacing="6">МР</text>
+  <rect x="264" y="470" width="72" height="1" fill="#2c5a4e"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#1b2523"/>
+  <text x="32" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" fill="#eff2f0">Л</text>
+  <rect x="16" y="52" width="32" height="2" fill="#2c5a4e"/>
+</svg>
