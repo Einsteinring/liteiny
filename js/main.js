@@ -220,7 +220,8 @@ function setupLeadForm() {
       await sendLead({
         name: form.elements.name.value,
         phone: form.elements.phone.value,
-        question: form.elements.question.value
+        question: form.elements.question.value,
+        company: form.elements.company?.value ?? ''
       });
 
       form.hidden = true;

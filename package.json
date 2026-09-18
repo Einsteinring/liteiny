@@ -1,0 +1,14 @@
+{
+  "name": "liteiny",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Демо-сайт юридического бюро «Литейный». Статика плюс одна серверная функция для приёма заявок в Telegram.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "python -m http.server 5178",
+    "test": "node --test test/lead.test.mjs"
+  }
+}

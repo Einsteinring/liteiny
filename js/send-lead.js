@@ -1,13 +1,17 @@
 /**
  * Отправка заявки с формы записи на консультацию.
  *
- * Сейчас бэкенда нет: функция логирует заявку в консоль и возвращает
- * успех с пометкой demo. Когда обработчик появится, достаточно вписать
- * его адрес в ENDPOINT — остальной код менять не придётся.
+ * Заявка уходит в serverless-функцию api/lead.js на том же домене, а та
+ * пересылает её в Telegram. Токен бота живёт в переменных окружения Vercel
+ * и на страницу никогда не попадает.
+ *
+ * Локально (python -m http.server) функции нет, поэтому на localhost
+ * работает демо-режим: заявка печатается в консоль.
  */
 
-const ENDPOINT = ''; // например '/api/lead' или адрес формы на стороннем сервисе
+const ENDPOINT = '/api/lead';
 const TIMEOUT_MS = 10000;
+const DEMO_HOSTS = ['localhost', '127.0.0.1', ''];
 
 /** Ошибка отправки: её ловит форма и показывает человеку. */
 export class LeadError extends Error {
@@ -28,16 +32,16 @@ export async function sendLead(data) {
     name: String(data.name || '').trim(),
     phone: String(data.phone || '').trim(),
     question: String(data.question || '').trim(),
-    page: location.pathname,
-    sentAt: new Date().toISOString()
+    // Ловушка для ботов: у человека это поле пустое.
+    company: String(data.company || '')
   };
 
   if (!payload.name || !payload.phone || !payload.question) {
     throw new LeadError('В заявке не хватает имени, телефона или вопроса.');
   }
 
-  // Демо-режим: показываем, что именно ушло бы на сервер.
-  if (!ENDPOINT) {
+  // Демо-режим для локального запуска: показываем, что ушло бы на сервер.
+  if (!ENDPOINT || DEMO_HOSTS.includes(location.hostname)) {
     console.info('[sendLead] заявка (демо-режим, ничего не отправлено):', payload);
     await wait(500);
     return { ok: true, mode: 'demo' };
@@ -55,7 +59,8 @@ export async function sendLead(data) {
     });
 
     if (!response.ok) {
-      throw new LeadError(`Сервер ответил ${response.status}.`);
+      const reason = await response.json().catch(() => null);
+      throw new LeadError(reason?.error ? `${reason.error}.` : `Сервер ответил ${response.status}.`);
     }
 
     return { ok: true, mode: 'sent' };

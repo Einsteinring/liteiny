@@ -661,9 +661,14 @@ setTimeout(function () {
               <p class="field__error" id="err-question" data-error-for="question" hidden></p>
             </div>
 
+            <div class="honeypot" inert>
+              <label for="lead-company">Компания</label>
+              <input type="text" id="lead-company" name="company" tabindex="-1" autocomplete="off">
+            </div>
+
             <button class="btn btn--primary btn--wide" type="submit" data-submit>Записаться на консультацию</button>
 
-            <p class="form__legal">Отправляя форму, вы соглашаетесь на обработку указанных данных для ответа на обращение. Это демонстрационный сайт: заявка никуда не уходит.</p>
+            <p class="form__legal">Отправляя форму, вы соглашаетесь на обработку указанных данных для ответа на обращение. Сайт демонстрационный, бюро вымышлено — заявка придёт автору сайта.</p>
             <p class="form__failure" data-form-failure role="alert" hidden></p>
           </form>
 
