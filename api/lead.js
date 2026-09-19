@@ -16,7 +16,7 @@
 
 const DEFAULT_ORIGINS = [
   "https://liteiny.vercel.app",
-  "https://liteiny-knyaziv.vercel.app",
+  "https://liteiny-einsteinring.vercel.app",
   "http://localhost:5178",
   "http://127.0.0.1:5178",
 ];
