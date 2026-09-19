@@ -14,14 +14,12 @@
  *   ALLOWED_ORIGINS    — необязательно, адреса через запятую
  */
 
-// Боевой адрес — первый, он от имени аккаунта не зависит.
-// Два следующих — служебные адреса превью-сборок, Vercel собирает их из
-// имени проекта и слога аккаунта. Слог переименовали, поэтому держим оба:
-// старый ещё жив, новый появится после того, как слог сменится в Vercel.
+// Боевой адрес и локальная разработка. Служебные адреса превью-сборок сюда
+// не вписываем: Vercel собирает их из имени проекта и слога аккаунта, а слог
+// меняется при переименовании. Их подставляет addVercelOrigins() из переменных,
+// которые Vercel задаёт сам, поэтому переименование ничего не ломает.
 const DEFAULT_ORIGINS = [
   "https://liteiny.vercel.app",
-  "https://liteiny-knyaziv.vercel.app",
-  "https://liteiny-einsteinring.vercel.app",
   "http://localhost:5178",
   "http://127.0.0.1:5178",
 ];
@@ -34,12 +32,28 @@ const LIMITS = {
 
 const MIN_PHONE_DIGITS = 10;
 
+/**
+ * Адреса, которые Vercel сообщает сам о текущей сборке:
+ *   VERCEL_PROJECT_PRODUCTION_URL — боевой домен проекта
+ *   VERCEL_URL                    — адрес именно этой сборки
+ *   VERCEL_BRANCH_URL             — адрес последней сборки ветки
+ * Ни один из них не приходится держать в коде, поэтому смена имени проекта
+ * или аккаунта не требует правок.
+ */
+function vercelOrigins() {
+  return ["VERCEL_PROJECT_PRODUCTION_URL", "VERCEL_URL", "VERCEL_BRANCH_URL"]
+    .map((name) => process.env[name])
+    .filter(Boolean)
+    .map((host) => "https://" + host);
+}
+
 function allowedOrigins() {
   const fromEnv = (process.env.ALLOWED_ORIGINS || "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
-  return fromEnv.length ? fromEnv : DEFAULT_ORIGINS;
+  const base = fromEnv.length ? fromEnv : DEFAULT_ORIGINS;
+  return [...new Set([...base, ...vercelOrigins()])];
 }
 
 function readBody(req) {

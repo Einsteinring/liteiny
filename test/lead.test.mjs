@@ -187,3 +187,37 @@ test('ошибка Telegram превращается в 502 без токена 
     delete process.env.TELEGRAM_CHAT_ID;
   }
 });
+
+test('адрес сборки из переменных Vercel проходит без правки кода', async () => {
+  process.env.VERCEL_URL = 'liteiny-abc123-einsteinring.vercel.app';
+  try {
+    const res = makeRes();
+    await handler(
+      makeReq({
+        body: { ...VALID, company: 'ООО Спам' },
+        origin: 'https://liteiny-abc123-einsteinring.vercel.app'
+      }),
+      res
+    );
+
+    // Дошли до ловушки, значит origin возражений не вызвал.
+    assert.equal(res.statusCode, 200);
+  } finally {
+    delete process.env.VERCEL_URL;
+  }
+});
+
+test('чужой адрес отклоняется и при заданных переменных Vercel', async () => {
+  process.env.VERCEL_URL = 'liteiny-abc123-einsteinring.vercel.app';
+  try {
+    const res = makeRes();
+    await handler(
+      makeReq({ body: VALID, origin: 'https://liteiny-chuzhoy.vercel.app' }),
+      res
+    );
+
+    assert.equal(res.statusCode, 403);
+  } finally {
+    delete process.env.VERCEL_URL;
+  }
+});
