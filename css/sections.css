@@ -6,105 +6,88 @@
 /* ───────────────────────── Первый экран ───────────────────────── */
 
 .hero__title {
-  font-size: var(--size-h1);
+  font-size: var(--fs-h1);
   line-height: var(--lh-tight);
-  letter-spacing: -0.022em;
+  letter-spacing: -0.015em;
+}
+
+/* Две фразы заголовка — два утверждения: вторая начинается с новой строки. */
+@media (min-width: 720px) {
+  .hero__line { display: block; }
 }
 
 .hero__definition {
-  max-width: 58ch;
-  margin-top: var(--space-4);
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  line-height: 1.5;
-  color: var(--iron-muted);
+  max-width: 56ch;
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--graphite);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-4) var(--space-5);
+  gap: var(--space-4) var(--space-6);
   margin-top: var(--space-6);
 }
 
-/* На низких экранах (1366×768 и подобных) реестр подтягивается вверх,
-   чтобы до скролла было видно хотя бы половину строк. */
-@media (min-width: 1024px) and (max-height: 820px) {
-  .hero__definition { margin-top: var(--space-3); }
-  .docket-block { margin-top: var(--space-5); }
-}
-
-/* Единственный не-пользовательский момент движения на странице:
-   реестр «набирается» один раз при загрузке. */
+/* Единственное движение, которое человек не запускал сам: печать
+   ложится на выписку один раз после загрузки. Класс is-composed
+   ставит скрипт; без него (и при «меньше движения») печать просто стоит. */
 @media (prefers-reduced-motion: no-preference) {
-  .js .docket-rule {
-    transform: scaleX(0);
-    transform-origin: left center;
-  }
-
-  .js .docket-head,
-  .js .docket__row,
-  .js .docket-note,
-  .js .docket-disclaimer { opacity: 0; }
-
-  .js .is-composed .docket-rule { animation: rule-draw 640ms var(--ease) forwards; }
-  .js .is-composed .docket-rule--end { animation-delay: 220ms; }
-  .js .is-composed .docket-head { animation: fade-in 420ms var(--ease) 60ms forwards; }
-
-  .js .is-composed .docket__row {
-    animation: fade-in 420ms var(--ease) forwards;
-    animation-delay: calc(240ms + var(--i) * 70ms);
-  }
-
-  .js .is-composed .docket-note { animation: fade-in 420ms var(--ease) 560ms forwards; }
-  .js .is-composed .docket-disclaimer { animation: fade-in 420ms var(--ease) 620ms forwards; }
+  .js .seal { opacity: 0; transform: rotate(-26deg) scale(1.4); }
+  .js .is-composed .seal { animation: stamp 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 260ms forwards; }
 }
 
-@keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes fade-in  { from { opacity: 0; }         to { opacity: 1; } }
+@keyframes stamp {
+  0%   { opacity: 0;    transform: rotate(-26deg) scale(1.4); }
+  60%  { opacity: 0.95; transform: rotate(-9deg) scale(0.96); }
+  100% { opacity: 0.88; transform: rotate(-10deg) scale(1); }
+}
 
-/* ───────────────────────── Практики ───────────────────────── */
-
-.practices { border-top: 1px solid var(--iron); }
+/* ───────────────────────── Практики ─────────────────────────
+   На широком экране — две колонки: слева название и кто ведёт,
+   справа суть и раскрывающиеся ситуации. */
 
 .practice {
-  padding-block: var(--space-5);
-  border-bottom: 2px solid var(--rule);
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--rule);
 }
 
-.practice:last-child { border-bottom: 0; }
+.practice:first-child { border-top: 1px solid var(--rule); }
 
-.practice__name { font-size: var(--size-h3); }
+.practice__name {
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+}
 
 .practice__lead {
-  max-width: 62ch;
+  max-width: var(--measure);
   margin-top: var(--space-3);
-  line-height: 1.6;
 }
 
 .practice__owner {
   margin-top: var(--space-2);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
-  color: var(--iron-muted);
-  white-space: nowrap;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--graphite);
 }
 
-.practice .disclosure { margin-top: var(--space-3); }
+.practice .disclosure { margin-top: var(--space-2); }
 
-.practice__detail-inner { padding-top: var(--space-4); }
+.practice__detail-inner { padding-top: var(--space-3); }
 
 .situations {
   display: grid;
   gap: var(--space-3);
-  max-width: 64ch;
+  max-width: var(--measure);
 }
 
 .situations li {
   position: relative;
-  padding-left: 22px;
-  font-size: var(--size-small);
+  padding-left: 26px;
   line-height: 1.55;
 }
 
@@ -112,134 +95,149 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0.72em;
-  width: 11px;
+  top: 0.78em;
+  width: 13px;
   height: 1px;
-  background: var(--rule-strong);
+  background: var(--ink);
 }
 
 .practice__who {
   margin-top: var(--space-4);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  font-size: var(--fs-small);
 }
 
-.practice__who a {
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 1px;
-}
-
-.practice__who a:hover { border-bottom-color: var(--patina); }
-
-@media (min-width: 720px) {
-  .practice__top {
+@media (min-width: 900px) {
+  .practice {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: var(--space-5);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--space-7);
+    align-items: start;
   }
 
-  .practice__name  { grid-area: 1 / 1; }
-  .practice__owner { grid-area: 1 / 2; margin-top: 0.35em; text-align: right; }
-  .practice__lead  { grid-area: 2 / 1; }
+  .practice__top { display: contents; }
+
+  .practice__name  { grid-column: 1; grid-row: 1; }
+  .practice__owner { grid-column: 1; grid-row: 2; margin-top: var(--space-3); }
+  .practice__lead  { grid-column: 2; grid-row: 1; margin-top: 4px; }
+  .practice .disclosure { grid-column: 2; grid-row: 2; justify-self: start; margin-top: var(--space-2); }
+  .practice__detail { grid-column: 2; grid-row: 3; }
 }
 
-/* ───────────────────────── Чем закончились ───────────────────────── */
+/* ───────────────────────── Чем закончились ─────────────────────────
+   Карточки закрытых дел: год как номер папки, ситуация и что сделали,
+   внизу итог на чернильной полосе, суммы жирным. */
 
-.cases { border-top: 1px solid var(--iron); }
+.cases {
+  display: grid;
+  gap: var(--space-5);
+}
 
 .case {
-  display: grid;
-  gap: var(--space-4);
-  padding-block: var(--space-6);
-  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  overflow: hidden;
 }
-
-.case:last-child { border-bottom: 0; }
 
 .case__head {
   display: flex;
   align-items: baseline;
-  gap: var(--space-3);
-  font-family: var(--font-sans);
-  letter-spacing: 0;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 20px 26px 14px;
+  border-bottom: 1px solid var(--rule);
 }
 
 .case__year {
-  font-size: var(--size-body);
-  font-variant-numeric: tabular-nums;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
 }
 
 .case__area {
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  font-family: var(--font-text);
+  font-size: var(--fs-small);
+  color: var(--graphite);
+  text-align: right;
 }
 
-.case__facts { display: grid; gap: var(--space-4); }
+.case__body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.case__facts {
+  display: grid;
+  gap: var(--space-4);
+  padding: 18px 26px 24px;
+}
 
 .case__part dt {
-  margin-bottom: 6px;
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  margin-bottom: 4px;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--graphite);
 }
 
 .case__part dd {
-  font-size: var(--size-small);
+  font-size: 0.96875rem;
   line-height: 1.55;
 }
 
 .case__outcome {
-  max-width: 48ch;
-  margin-top: var(--space-4);
-  font-size: var(--size-h3);
-  line-height: 1.32;
+  margin-top: auto;
+  padding: 20px 26px 24px;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.45vw, 1.5rem);
+  line-height: 1.3;
 }
 
-@media (min-width: 720px) {
+.case__outcome .sum {
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media (min-width: 720px) and (max-width: 1023px) {
   .case__facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--space-5);
-  }
-
-  .case__part + .case__part {
-    border-left: 1px solid var(--rule);
-    padding-left: var(--space-5);
+    column-gap: var(--space-6);
   }
 }
 
-@media (min-width: 1080px) {
-  .case {
-    grid-template-columns: 124px minmax(0, 1fr);
-    column-gap: var(--space-5);
-    align-items: start;
-  }
-
-  .case__head { display: grid; gap: 2px; }
+@media (min-width: 1024px) {
+  .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ───────────────────────── Команда ───────────────────────── */
 
-.team { display: grid; gap: var(--space-6); }
+.team {
+  display: grid;
+  gap: var(--space-7) var(--space-5);
+}
 
 .member__name {
-  margin-top: var(--space-3);
-  font-size: 1.25rem;
+  margin-top: 18px;
+  font-size: 1.5rem;
+  line-height: 1.15;
 }
 
 .member__role {
   margin-top: 6px;
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  font-size: var(--fs-small);
   line-height: 1.45;
 }
 
 .member__years,
 .member__edu {
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
+  font-size: var(--fs-meta);
   line-height: 1.45;
-  color: var(--iron-muted);
+  color: var(--graphite);
 }
 
 .member__years {
@@ -252,52 +250,40 @@
 .member__facts {
   display: grid;
   gap: 10px;
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
+  margin-top: 14px;
+  padding-top: 14px;
   border-top: 1px solid var(--rule);
 }
 
 .member__facts li {
-  font-size: 0.875rem;
+  font-size: 0.90625rem;
   line-height: 1.55;
 }
 
 .team__note {
-  margin-top: var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--rule);
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  margin-top: var(--space-7);
+  font-size: var(--fs-meta);
+  color: var(--graphite);
 }
 
 @media (max-width: 559px) {
-  .member__photo { max-width: 176px; }
-}
-
-@media (min-width: 560px) {
-  .team {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--space-5);
-  }
-}
-
-/* В две колонки портрет иначе разрастается до полуметра. */
-@media (min-width: 560px) and (max-width: 1079px) {
   .member__photo { max-width: 240px; }
 }
 
-@media (min-width: 1080px) {
-  .team {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: var(--space-4);
-  }
+@media (min-width: 560px) {
+  .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Имена, сроки и факты должны стоять на общих горизонталях, иначе
-   четыре колонки читаются как четыре случайных столбика текста.
-   Ряды берём из общей сетки; где subgrid не поддержан, остаётся
-   обычный поток — раскладка не ломается, только теряет выравнивание. */
+/* В две колонки портрет иначе разрастается почти до полуметра. */
+@media (min-width: 560px) and (max-width: 1079px) {
+  .member__photo { max-width: 280px; }
+}
+
+@media (min-width: 1080px) {
+  .team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Имена, сроки и факты на общих горизонталях: ряды берём из сетки. */
 @supports (grid-template-rows: subgrid) {
   @media (min-width: 560px) {
     .member { display: grid; grid-template-rows: subgrid; }
@@ -307,7 +293,7 @@
   @media (min-width: 560px) and (max-width: 1079px) {
     .team {
       row-gap: 0;
-      grid-template-rows: repeat(6, auto) var(--space-6) repeat(6, auto);
+      grid-template-rows: repeat(6, auto) var(--space-7) repeat(6, auto);
     }
 
     .member:nth-child(1) { grid-area: 1 / 1 / span 6 / auto; }
@@ -317,8 +303,6 @@
   }
 
   @media (min-width: 1080px) {
-    /* Ряды подсетки не должны получить общий row-gap: вертикальный
-       ритм внутри карточки задан отступами её частей. */
     .team { row-gap: 0; grid-template-rows: repeat(6, auto); }
     .member { grid-row: span 6; }
   }
@@ -328,72 +312,73 @@
 
 .formats {
   display: grid;
-  gap: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--iron);
+  border-top: 3px double var(--ink);
 }
 
-.format__name { font-size: var(--size-h3); }
+.format {
+  padding: 26px 0 30px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.format__name { font-size: var(--fs-h3); }
 
 .format__price {
-  margin-top: var(--space-3);
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.15;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.8rem + 1.4vw, 3rem);
+  line-height: 1;
+  font-variant-numeric: lining-nums;
 }
 
 .format__price span {
   display: block;
-  margin-top: 5px;
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  margin-top: 10px;
+  font-family: var(--font-text);
+  font-size: var(--fs-small);
+  line-height: 1.3;
+  color: var(--graphite);
 }
 
-.format__facts { margin-top: var(--space-4); }
+.format__facts { margin-top: var(--space-5); }
 
 .format__facts dt {
   margin-top: var(--space-4);
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--graphite);
 }
 
 .format__facts dt:first-of-type { margin-top: 0; }
 
 .format__facts dd {
-  margin-top: 5px;
-  font-size: var(--size-small);
+  margin-top: 4px;
+  font-size: 0.96875rem;
   line-height: 1.55;
 }
 
 .formats__note {
-  max-width: var(--measure-narrow);
+  max-width: var(--measure);
   margin-top: var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--rule);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  font-size: var(--fs-small);
   line-height: 1.55;
 }
 
-@media (min-width: 840px) {
+@media (min-width: 900px) {
   .formats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    row-gap: 0;
+    column-gap: var(--space-6);
   }
+
+  .format { border-bottom: 0; }
 
   .format + .format {
     border-left: 1px solid var(--rule);
-    padding-left: var(--space-5);
+    padding-left: var(--space-6);
   }
 }
 
-/* «Абонентское обслуживание» переносится в две строки — без общих
-   горизонталей цены и списки в трёх колонках разъезжаются. */
 @supports (grid-template-rows: subgrid) {
-  @media (min-width: 840px) {
+  @media (min-width: 900px) {
     .formats { grid-template-rows: repeat(3, auto); }
     .format { display: grid; grid-template-rows: subgrid; grid-row: span 3; }
   }
@@ -401,88 +386,89 @@
 
 /* ───────────────────────── Публикации ───────────────────────── */
 
-.articles { border-top: 1px solid var(--iron); }
+.articles { border-top: 1px solid var(--rule); }
 
 .article {
   display: grid;
   gap: var(--space-2);
-  padding-block: var(--space-5);
+  padding-block: 26px;
   border-bottom: 1px solid var(--rule);
 }
 
-.article:last-child { border-bottom: 0; }
-
 .article__date {
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
+  font-size: var(--fs-small);
+  color: var(--graphite);
   font-variant-numeric: tabular-nums;
-  color: var(--iron-muted);
 }
 
-.article__title { font-size: var(--size-h3); }
+.article__title {
+  font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  line-height: 1.2;
+}
 
 .article__lead {
-  max-width: 62ch;
-  margin-top: 10px;
-  font-size: var(--size-small);
-  line-height: 1.55;
-  color: var(--iron-muted);
+  max-width: var(--measure);
+  margin-top: var(--space-2);
+  color: var(--graphite);
 }
 
 .articles__note {
   margin-top: var(--space-5);
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  font-size: var(--fs-meta);
+  color: var(--graphite);
 }
 
 @media (min-width: 720px) {
   .article {
-    grid-template-columns: 148px minmax(0, 1fr);
-    column-gap: var(--space-5);
+    grid-template-columns: 200px minmax(0, 1fr);
+    column-gap: var(--space-6);
     align-items: baseline;
   }
 }
 
 /* ───────────────────────── Контакты ───────────────────────── */
 
-.contacts__form {
-  margin-top: var(--space-7);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--iron);
-}
-
 .contact-list dt {
-  margin-top: var(--space-4);
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  color: var(--iron-muted);
+  margin-top: var(--space-5);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--graphite);
 }
 
 .contact-list dt:first-of-type { margin-top: 0; }
 
 .contact-list dd {
-  max-width: 44ch;
+  max-width: 40ch;
   margin-top: 4px;
-  line-height: 1.5;
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  line-height: 1.4;
 }
 
-.form__title { font-size: var(--size-h3); }
+/* У антиквы плюс в телефоне уходит ниже строки — линию опускаем под него. */
+.contact-list dd a { text-underline-offset: 0.32em; }
+
+.contacts__form {
+  margin-top: var(--space-7);
+  padding: 26px 22px 28px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--ink);
+  border-radius: var(--radius-s);
+}
+
+.form__title { font-size: var(--fs-h3); }
 
 .form__intro {
   max-width: 46ch;
   margin-top: var(--space-2);
   margin-bottom: var(--space-5);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  font-size: var(--fs-small);
   line-height: 1.5;
-  color: var(--iron-muted);
+  color: var(--graphite);
 }
 
-/* После отправки остаётся только подтверждение: приглашение записаться
-   и обещание перезвонить дублировали бы блок «Записали».
-   Своя линейка подтверждению тогда не нужна — над ним уже стоит
-   линия, которая держит колонку на одной горизонтали с заголовком. */
+/* После отправки остаётся только подтверждение. */
 .contacts__form.is-sent .form__title,
 .contacts__form.is-sent .form__intro { display: none; }
 
@@ -491,83 +477,77 @@
   padding-top: 0;
 }
 
-/* Заголовок секции живёт внутри левой колонки, поэтому форма начинается
-   с той же горизонтали, что и «Контакты», а не провисает под ними.
-   Растягивать её на две строки грида нельзя: грид раздаёт высоту
-   растянутого элемента по всем его строкам и утаскивает контакты вниз. */
 @media (min-width: 900px) {
   .contacts {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
-    column-gap: var(--space-7);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    column-gap: var(--space-8);
     align-items: start;
   }
 
   .contacts__form {
     margin-top: 0;
-    padding-top: var(--space-3);
+    padding: 30px 34px 34px;
   }
 }
 
-/* ───────────────────────── Футер ───────────────────────── */
+/* ───────────────────────── Подвал ───────────────────────── */
 
 .site-footer {
-  padding-block: var(--space-7) var(--space-6);
-  background: var(--iron);
-  color: var(--paper-on-iron);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  padding-block: var(--space-8) var(--space-7);
+  background: var(--ink);
+  color: var(--on-ink);
+  font-size: var(--fs-small);
 }
 
 .site-footer a {
   text-decoration: none;
-  border-bottom: 1px solid rgba(227, 232, 230, 0.28);
-  padding-bottom: 1px;
+  border-bottom: 1px solid rgba(232, 232, 226, 0.3);
   transition: border-color var(--t-fast) var(--ease);
 }
 
 .site-footer a:hover {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
-.site-footer :focus-visible { outline-color: var(--paper-on-iron); }
+.site-footer :focus-visible { outline-color: var(--on-ink); }
 
-.site-footer__top { display: grid; gap: var(--space-6); }
+.site-footer__top { display: grid; gap: var(--space-7); }
 
 .site-footer__name {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  line-height: 1.1;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
 }
 
 .site-footer__kind {
-  margin-top: 6px;
-  font-size: var(--size-meta);
-  color: var(--muted-on-iron);
+  margin-top: var(--space-2);
+  font-size: var(--fs-meta);
+  color: var(--on-ink-muted);
 }
 
-.site-footer__nav ul { display: grid; gap: 9px; }
+.site-footer__nav ul { display: grid; gap: 10px; }
 
-.site-footer__contact p { margin-bottom: 9px; line-height: 1.5; }
-.site-footer__contact p:last-child { margin-bottom: 0; color: var(--muted-on-iron); }
+.site-footer__contact p { margin-bottom: 10px; line-height: 1.5; }
+.site-footer__contact p:last-child { margin-bottom: 0; color: var(--on-ink-muted); }
 
 .site-footer__legal {
   display: grid;
   gap: var(--space-2);
-  margin-top: var(--space-7);
-  padding-top: var(--space-4);
-  border-top: 1px solid rgba(227, 232, 230, 0.18);
-  font-size: var(--size-meta);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(232, 232, 226, 0.16);
+  font-size: var(--fs-meta);
   line-height: 1.5;
-  color: var(--muted-on-iron);
+  color: var(--on-ink-muted);
 }
 
-.site-footer__demo { color: var(--paper-on-iron); }
+.site-footer__demo { color: var(--on-ink); }
 
 @media (min-width: 900px) {
   .site-footer__top {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: var(--space-5);
+    column-gap: var(--space-6);
   }
 }

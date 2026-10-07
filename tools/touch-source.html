@@ -1,8 +1,11 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family: 'Old Standard TT'; src: url('../assets/fonts/old-standard-400.woff2') format('woff2'); }
 * { margin:0; box-sizing:border-box }
-body { width:180px; height:180px; background:#1b2523; display:flex;
-       flex-direction:column; align-items:center; justify-content:center;
-       font-family: Georgia, serif; }
-.l { color:#eff2f0; font-size:104px; line-height:1 }
-.r { width:78px; height:4px; background:#2c5a4e; margin-top:14px }
-</style></head><body><div class="l">Л</div><div class="r"></div></body></html>
+body { width:180px; height:180px; background:#1a1c21; display:flex;
+       align-items:center; justify-content:center; }
+.seal { width:132px; height:132px; border:3px solid #f0f0ec; border-radius:50%;
+        display:flex; align-items:center; justify-content:center; position:relative; }
+.seal::before { content:""; position:absolute; inset:7px; border:1px solid #f0f0ec; border-radius:50%; }
+.l { color:#f0f0ec; font-family:'Old Standard TT', Georgia, serif; font-size:78px; line-height:1; margin-top:-4px }
+.r { position:absolute; bottom:14px; left:50%; width:64px; height:4px; margin-left:-32px; background:#b8473a }
+</style></head><body><div class="seal"><div class="l">Л</div></div><div class="r"></div></body></html>

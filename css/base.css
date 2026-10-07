@@ -1,6 +1,6 @@
 /* ============================================================
    base.css — сброс, типографика по умолчанию, фокус, движение.
-   Только селекторы по элементам и утилиты. Специфичность 0-0-1.
+   Только селекторы по элементам и утилиты.
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -15,20 +15,21 @@ html {
 body {
   margin: 0;
   background: var(--paper);
-  color: var(--iron);
-  font-family: var(--font-serif);
-  font-size: var(--size-body);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
   line-height: var(--lh-body);
-  font-synthesis-weight: none;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4 {
   margin: 0;
-  font-weight: 400;          /* крупный светлый серифный заголовок */
+  font-family: var(--font-display);
+  font-weight: 400;
   line-height: var(--lh-head);
-  letter-spacing: -0.012em;
+  letter-spacing: -0.005em;
   overflow-wrap: break-word;
 }
 
@@ -40,10 +41,10 @@ img, svg { display: block; max-width: 100%; height: auto; }
 a {
   color: inherit;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 0.2em;
 }
 
-a:hover { color: var(--patina); }
+a:hover { color: var(--accent); }
 
 button, input, textarea, select {
   font: inherit;
@@ -52,17 +53,17 @@ button, input, textarea, select {
 
 table { border-collapse: collapse; width: 100%; }
 
-::selection { background: var(--patina); color: #fff; }
+::selection { background: var(--ink); color: var(--sheet); }
 
-/* — Фокус ——————————————————————————————————————— */
+/* — Фокус: сургучная рамка, видна на бумаге и на листе ———— */
 :focus { outline: none; }
 
 :focus-visible {
-  outline: 2px solid var(--patina);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-/* — Утилиты ——————————————————————————————————— */
+/* — Утилиты ——————————————————————————————————————— */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -79,22 +80,21 @@ table { border-collapse: collapse; width: 100%; }
   top: 0;
   z-index: 100;
   padding: 12px 20px;
-  background: var(--iron);
-  color: var(--paper-on-iron);
-  font-family: var(--font-sans);
-  font-size: var(--size-small);
+  background: var(--ink);
+  color: var(--on-ink);
+  font-size: var(--fs-small);
   text-decoration: none;
   transform: translateY(-120%);
 }
 
 .skip-link:focus-visible {
   transform: translateY(0);
-  color: var(--paper-on-iron);
+  color: var(--on-ink);
 }
 
 [hidden] { display: none !important; }
 
-/* — Уважение к настройке «меньше движения» ————————— */
+/* — «Меньше движения» ——————————————————————————————— */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 

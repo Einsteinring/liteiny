@@ -1,65 +1,118 @@
 /* ============================================================
-   layout.css — контейнер, ритм секций, дорожка «поля документа».
-   Вертикальные отступы секций задаются РОВНО ОДНИМ правилом,
-   чтобы ничего не воевало по специфичности.
+   layout.css — контейнер, ритм секций, «резолюция» над разделом.
+   Вертикальный отступ секции задаётся одним правилом;
+   модификаторы меняют переменные, а не переопределяют padding.
    ============================================================ */
 
 .shell {
-  width: min(100% - 2 * var(--gutter), var(--shell-max));
+  width: min(100% - 2 * var(--gutter), var(--container));
   margin-inline: auto;
 }
 
-/* Единственное место, где секция получает вертикальный отступ.
-   Модификаторы меняют переменные, а не переопределяют padding. */
 .section {
   padding-block: var(--pad-top, var(--section-pad)) var(--pad-bottom, var(--section-pad));
 }
 
-/* Разделитель между секциями — тоже одно правило. */
-.section + .section {
-  border-top: 1px solid var(--rule);
+/* Граница листа: разделы отделяет чернильная линия по ширине текста. */
+.section + .section > .shell {
+  border-top: 1px solid var(--ink);
+  padding-top: var(--space-5);
 }
 
 .section--hero {
-  --pad-top: clamp(40px, 5vw, 72px);
+  --pad-top: clamp(28px, 4vw, 56px);
   --pad-bottom: clamp(56px, 7vw, 96px);
 }
 
+/* Невысокий ноутбук (1366×768): первый экран чуть плотнее, чтобы
+   до сгиба помещались хотя бы две строки реестра. */
 @media (min-width: 1024px) and (max-height: 820px) {
-  .section--hero { --pad-top: 32px; --pad-bottom: 56px; }
+  .section--hero { --pad-top: var(--space-6); }
+  .section--hero .docket-block { margin-top: var(--space-6); }
 }
 
-/* — Дорожка: узкое левое поле + широкая колонка ————————— */
+/* — Раздел: резолюция и основной текст ————————————————
+   Подпись к разделу в разметке стоит перед текстом. На широком
+   экране она уходит в правый верхний угол, как резолюция на деловой
+   бумаге, и набирается курсивом. На узком стоит над заголовком. */
 .rail {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .rail__aside {
-  font-family: var(--font-sans);
-  font-size: var(--size-meta);
-  line-height: 1.5;
-  color: var(--iron-muted);
-  max-width: 40ch;
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--graphite);
+}
+
+.rail__aside::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin-bottom: var(--space-3);
+  background: var(--ink);
 }
 
 .rail__main { min-width: 0; }
 
-@media (min-width: 1080px) {
+/* На узком экране над резолюцией уже стоит линия раздела — вторая лишняя. */
+@media (max-width: 1023px) {
+  .section + .section .rail__aside::before { display: none; }
+}
+
+@media (min-width: 1024px) {
   .rail {
-    grid-template-columns: var(--rail-w) minmax(0, 1fr);
-    column-gap: var(--rail-gap);
-    align-items: start;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-5);
+    row-gap: 0;
   }
 
   .rail__aside {
-    padding-top: 0.6em;      /* выравнивание по базовой линии заголовка */
-    border-top: 1px solid var(--rule);
+    grid-column: 8 / -1;
+    grid-row: 1;
+    justify-self: end;
+    align-self: end;
+    width: 100%;
+    max-width: 30ch;
+    margin-bottom: var(--space-7);
+  }
+
+  .rail__main { grid-column: 1 / -1; }
+
+  /* В обычном разделе заголовок слева и резолюция справа стоят в одной
+     строке, как шапка документа. Обёртка раздела растворяется в сетке,
+     её дети встают в неё напрямую. Первый экран и контакты устроены
+     иначе и остаются как есть. */
+  .rail__main:not(.hero__main):not(.contacts) { display: contents; }
+  .rail__main:not(.hero__main):not(.contacts) > * { grid-column: 1 / -1; }
+
+  .rail__main:not(.hero__main):not(.contacts) > .section__title {
+    grid-column: 1 / 8;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  /* На первом экране лист начинается с заголовка, а резолюция стоит
+     на полях напротив вводного абзаца. Так реестр поднимается выше:
+     на 1366×768 до прокрутки видна половина его строк. */
+  .hero__main { display: contents; }
+  .hero__main > * { grid-column: 1 / -1; }
+  .hero__main > .hero__title { grid-row: 1; }
+  .hero__main > .hero__definition { grid-column: 1 / 8; grid-row: 2; }
+
+  .section--hero .rail__aside {
+    grid-row: 2;
+    margin-bottom: 0;
   }
 }
 
-/* — Заголовок секции ————————————————————————————— */
 .section__title {
-  font-size: var(--size-h2);
-  margin-bottom: var(--space-6);
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  margin-bottom: var(--space-7);
 }
